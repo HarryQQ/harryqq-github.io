@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="21ebd849-82a8-4cfc-854f-14134b9e5ceb" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/_posts/Hexo使用.md" afterPath="$PROJECT_DIR$/source/_posts/Hexo使用.md" />
-    </list>
+    <list default="true" id="21ebd849-82a8-4cfc-854f-14134b9e5ceb" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -24,8 +22,8 @@
         <entry file="file://$PROJECT_DIR$/source/_posts/Hexo使用.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="431">
-                <caret line="50" column="16" lean-forward="true" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
+              <first_editor relative-caret-position="496">
+                <caret line="48" column="11" lean-forward="true" selection-start-line="48" selection-start-column="11" selection-end-line="48" selection-end-column="11" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -178,7 +176,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1524295669861</updated>
-      <workItem from="1524295671397" duration="806000" />
+      <workItem from="1524295671397" duration="871000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1524296407820</created>
@@ -198,7 +196,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="806000" />
+    <option name="totallyTimeSpent" value="871000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1936" height="1056" extended-state="0" />
@@ -248,8 +246,8 @@
     <entry file="file://$PROJECT_DIR$/source/_posts/Hexo使用.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="431">
-            <caret line="50" column="16" lean-forward="true" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
+          <first_editor relative-caret-position="496">
+            <caret line="48" column="11" lean-forward="true" selection-start-line="48" selection-start-column="11" selection-end-line="48" selection-end-column="11" />
             <folding />
           </first_editor>
           <second_editor />
