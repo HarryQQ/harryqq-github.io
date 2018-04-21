@@ -109,10 +109,13 @@
 <meta property="og:site_name" content="harryqq">
 <meta property="og:description" content="对比过jekyll和hexo，在windows 10下jekyll需要安装ruby环境，官方也不推荐在windows上使用，而hexo是node环境就可以，所以选择hexo。 hexo官网 更换主题git clone ${主题git地址} themes/${主题名} 如： git clone git@github.com:theme-next/hexo-theme-next.git themes/">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2018-04-21T05:54:22.654Z">
+<meta property="og:image" content="http://yoursite.com/2018/04/19/Hexo使用/baobao.jpg">
+<meta property="og:image" content="https://www.zoivi.cn/image/5.jpg">
+<meta property="og:updated_time" content="2018-04-21T07:04:36.523Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo使用">
 <meta name="twitter:description" content="对比过jekyll和hexo，在windows 10下jekyll需要安装ruby环境，官方也不推荐在windows上使用，而hexo是node环境就可以，所以选择hexo。 hexo官网 更换主题git clone ${主题git地址} themes/${主题名} 如： git clone git@github.com:theme-next/hexo-theme-next.git themes/">
+<meta name="twitter:image" content="http://yoursite.com/2018/04/19/Hexo使用/baobao.jpg">
 
 
 
@@ -336,7 +339,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-04-21 13:54:22" itemprop="dateModified" datetime="2018-04-21T13:54:22+08:00">2018-04-21</time>
+                <time title="Updated at: 2018-04-21 15:04:36" itemprop="dateModified" datetime="2018-04-21T15:04:36+08:00">2018-04-21</time>
               
             
           </span>
@@ -375,9 +378,21 @@
 <p>如： git clone <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:theme-next/hexo-theme-next.git themes/next</p>
 <p>修改_config.yml文件为：</p>
 <pre><code>theme: next
-</code></pre><h4 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h4><p><a href="https://www.jianshu.com/p/cf0628478a4e" target="_blank" rel="noopener">参考</a></p>
+</code></pre><h4 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h4><p><a href="http://51world.win/" target="_blank" rel="noopener">参考</a></p>
+<p>配置文件开启</p>
+<p>post_asset_folder: true</p>
+<blockquote>
+<p>hexo new 一个新文章，会有一个同名文件存放资源，如图片</p>
+</blockquote>
+<p>我在[Hexo使用]文件夹存放了 baobao.jpg</p>
+<pre><code>{% asset_img baobao.jpg xx %}
 
-
+ &lt;img src=&quot;baobao.jpg&quot; height=&quot;80&quot; width=&quot;100&quot; /&gt;
+</code></pre><p> <img src="baobao.jpg" height="80" width="100"></p>
+<p>另外可以直接引用网络图片</p>
+<pre><code>&lt;img src=&quot;https://www.zoivi.cn/image/5.jpg&quot; width=&quot;100&quot; height=&quot;70&quot; /&gt;
+</code></pre><p> <img src="https://www.zoivi.cn/image/5.jpg" width="100" height="70"></p>
+<h4 id="点击放大预览"><a href="#点击放大预览" class="headerlink" title="点击放大预览"></a>点击放大预览</h4>
       
     </div>
 
@@ -526,7 +541,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#更换主题"><span class="nav-number">1.</span> <span class="nav-text">更换主题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插入图片"><span class="nav-number">2.</span> <span class="nav-text">插入图片</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#更换主题"><span class="nav-number">1.</span> <span class="nav-text">更换主题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插入图片"><span class="nav-number">2.</span> <span class="nav-text">插入图片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#点击放大预览"><span class="nav-number">3.</span> <span class="nav-text">点击放大预览</span></a></li></ol></div>
             
 
           </div>

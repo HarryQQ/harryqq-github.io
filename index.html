@@ -556,7 +556,7 @@ onBridgeReady (params) {
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-04-21 13:54:22" itemprop="dateModified" datetime="2018-04-21T13:54:22+08:00">2018-04-21</time>
+                <time title="Updated at: 2018-04-21 15:04:36" itemprop="dateModified" datetime="2018-04-21T15:04:36+08:00">2018-04-21</time>
               
             
           </span>
@@ -597,9 +597,21 @@ onBridgeReady (params) {
 <p>如： git clone <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:theme-next/hexo-theme-next.git themes/next</p>
 <p>修改_config.yml文件为：</p>
 <pre><code>theme: next
-</code></pre><h4 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h4><p><a href="https://www.jianshu.com/p/cf0628478a4e" target="_blank" rel="noopener">参考</a></p>
+</code></pre><h4 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h4><p><a href="http://51world.win/" target="_blank" rel="noopener">参考</a></p>
+<p>配置文件开启</p>
+<p>post_asset_folder: true</p>
+<blockquote>
+<p>hexo new 一个新文章，会有一个同名文件存放资源，如图片</p>
+</blockquote>
+<p>我在[Hexo使用]文件夹存放了 baobao.jpg</p>
+<pre><code>{% asset_img baobao.jpg xx %}
 
-
+ &lt;img src=&quot;baobao.jpg&quot; height=&quot;80&quot; width=&quot;100&quot; /&gt;
+</code></pre><p> <img src="baobao.jpg" height="80" width="100"></p>
+<p>另外可以直接引用网络图片</p>
+<pre><code>&lt;img src=&quot;https://www.zoivi.cn/image/5.jpg&quot; width=&quot;100&quot; height=&quot;70&quot; /&gt;
+</code></pre><p> <img src="https://www.zoivi.cn/image/5.jpg" width="100" height="70"></p>
+<h4 id="点击放大预览"><a href="#点击放大预览" class="headerlink" title="点击放大预览"></a>点击放大预览</h4>
           
         
       
