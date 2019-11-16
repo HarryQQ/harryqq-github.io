@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="ifconfig可以查看ip,windows是ipconfig,两个命令很像，注意别拼错。另外也可以用命令 ip addr putty工具–一个简单用于连接服务器的命令行工具 查看网络情况ping www.baidu.com,ctrl+c退出ping win10有时会报 device/credential guard禁用才能启动虚拟机，可以参考一下解决方法 yum -y update 更新一下">
+<meta name="keywords" content="centos,linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="centos部署应用">
+<meta property="og:url" content="http://yoursite.com/2018/04/29/centos/index.html">
+<meta property="og:site_name" content="HarryQ Blog">
+<meta property="og:description" content="ifconfig可以查看ip,windows是ipconfig,两个命令很像，注意别拼错。另外也可以用命令 ip addr putty工具–一个简单用于连接服务器的命令行工具 查看网络情况ping www.baidu.com,ctrl+c退出ping win10有时会报 device/credential guard禁用才能启动虚拟机，可以参考一下解决方法 yum -y update 更新一下">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2018/04/29/centos/centos.png">
+<meta property="og:updated_time" content="2019-11-16T01:42:16.311Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="centos部署应用">
+<meta name="twitter:description" content="ifconfig可以查看ip,windows是ipconfig,两个命令很像，注意别拼错。另外也可以用命令 ip addr putty工具–一个简单用于连接服务器的命令行工具 查看网络情况ping www.baidu.com,ctrl+c退出ping win10有时会报 device/credential guard禁用才能启动虚拟机，可以参考一下解决方法 yum -y update 更新一下">
+<meta name="twitter:image" content="http://yoursite.com/2018/04/29/centos/centos.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/29/centos/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>centos部署应用 | HarryQ Blog</title>
+  
+
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?685392c0d07f2ed8cfa36087143f7df0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/HarryQQ" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HarryQ Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">认真过每一天</p>
+      
+<img src="https://travis-ci.com/HarryQQ/hexotwo.svg?token=PVRpJyQM5t9jbzxSyKbe&branch=master">
+
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/29/centos/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HarryQ">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/mao.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HarryQ Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">centos部署应用
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-29 00:28:23" itemprop="dateCreated datePublished" datetime="2018-04-29T00:28:23+00:00">2018-04-29</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <img src="/2018/04/29/centos/centos.png" title="centos">
+<ol>
+<li>ifconfig可以查看ip,windows是ipconfig,两个命令很像，注意别拼错。另外也可以用命令 ip addr</li>
+<li>putty工具–一个简单用于连接服务器的命令行工具</li>
+<li>查看网络情况ping <a href="http://www.baidu.com,ctrl+c退出ping" target="_blank" rel="noopener">www.baidu.com,ctrl+c退出ping</a></li>
+<li>win10有时会报 device/credential guard禁用才能启动虚拟机，可以参考一下<a href="https://zhidao.baidu.com/question/1834412748547819180.html" target="_blank" rel="noopener">解决方法</a></li>
+<li>yum -y update 更新一下yum （可能会很久）</li>
+<li>yum -y groupinstall “Development Tools” centOS 系统下编译源代码的一些开发工具<a href="http://yijiebuyi.com/blog/4fcce2f8b1aed8389f34c27f22864a04.html" target="_blank" rel="noopener">参考</a></li>
+<li>centos上安装mysql时，发现有三种方式：<ul>
+<li>rpm安装 </li>
+<li>二进制包安装 </li>
+<li>源码包安装 </li>
+</ul>
+</li>
+</ol>
+<p>那么问题来了，二进制包和源代码包怎么区别呢？ </p>
+<p><strong>二进制包:</strong> 里面包括了已经经过编译，可以马上运行的程序。你只需要下载和解包（安装）它们以后，就马上可以使用。</p>
+<p><strong>源代码包:</strong> 里面包括了程序原始的程序代码，需要在你的计算机上进行编译以后才可以产生可运行安装程序<br>源码的安装一般由有这三个步骤：配置(configure)、编译(make)、安装(make install)</p>
+<h3 id="编译安装配置"><a href="#编译安装配置" class="headerlink" title="编译安装配置"></a>编译安装配置</h3><blockquote>
+<p><strong>./configure –prefix=</strong>  // 编译前的配置命令</p>
+</blockquote>
+<p>–prefix选项就是配置安装的路径。<br>如果不配置该选项<br>安装后可执行文件默认放在/usr /local/bin<br>库文件默认放在/usr/local/lib<br>配置文件默认放在/usr/local/etc<br>其它的资源文件放在/usr /local/share<br>这样文件就比较分散。  </p>
+<p>为了便于集中管理某个软件的各种文件，可以配置–prefix，</p>
+<blockquote>
+<p>如：./configure –prefix=/usr/local<br>// 可以把所有资源文件放在/usr/local的路径中，就不会分散了。</p>
+</blockquote>
+<h3 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h3><p>yum install git -y // 加上-y的意思是，所有需要你选对或错的地方，都会自动选yes</p>
+<h3 id="nvm安装node-js"><a href="#nvm安装node-js" class="headerlink" title="nvm安装node.js"></a><a href>nvm安装node.js</a></h3><h4 id="用n安装"><a href="#用n安装" class="headerlink" title="用n安装"></a>用n安装</h4><p><a href="http://blog.csdn.net/sruru/article/details/46301405" target="_blank" rel="noopener">http://blog.csdn.net/sruru/article/details/46301405</a></p>
+<ol>
+<li>先安装NVM（Node version manager）</li>
+<li>wget <a href="https://github.com/cnpm/nvm/archive/v0.23.0.tar.gz" target="_blank" rel="noopener">https://github.com/cnpm/nvm/archive/v0.23.0.tar.gz</a></li>
+<li>解压包 tar -xf v0.23.0.tar.gz</li>
+<li>进入解压后文件，执行./install.sh</li>
+<li>当前目录下执行 source ~/.bash_profile</li>
+<li>重启terminal</li>
+<li>nvm –version验证是否安装成功</li>
+<li>nvm ls-remote 输出版本列表</li>
+<li>nvm install ‘版本号’</li>
+<li>NVM_NODEJS_ORG_MIRROR=<a href="https://npm.taobao.org/mirrors/node" target="_blank" rel="noopener">https://npm.taobao.org/mirrors/node</a> nvm install ‘版本号’<blockquote>
+<p>配置七牛的 node dist 镜像，比较快</p>
+</blockquote>
+</li>
+<li>nvm alias default ‘版本号’或stable（表示稳定版）//解决每次启动终端都要设置nvm use ‘版本号’</li>
+<li>配置npm的国内源，npm config set registry <a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a>     </li>
+<li>nvm ls // 查看已经安装node列表  </li>
+<li>nvm use //</li>
+</ol>
+<h4 id="源码编译后安装node-js"><a href="#源码编译后安装node-js" class="headerlink" title="源码编译后安装node.js"></a>源码编译后安装node.js</h4><blockquote>
+<p>安装的时间可能会<br>    yum -y install gcc gcc-c++ openssl-devel // 编译及依赖相关软件<br>    wget  xxx // 下载源码包</p>
+</blockquote>
+<blockquote>
+<p>源码包跟二进制包的区别是：源码包的包名一般只带版本号<br>mysql-5.0.45.tar.gz // 源码包<br>mysql-5.0.45-linux-x86_64-glibc23.tar.gz // 二进制包 </p>
+</blockquote>
+<pre><code>tar -xvf xxx  // 解压
+cd xxx // 进入解压包目录
+ ./configure --prefix=/opt/node  //配置安装路径
+make &amp;&amp; make install //  编译、安装
+vim /etc/profile // 编辑环境变量配置， 加上下面三句
+export NODE_HOME=/opt/node
+export PATH=$NODE_HOME/bin:$PATH
+export NODE_PATH=$NODE_HOME/lib/node_modules:$PATH
+</code></pre><blockquote>
+<p>必须重启才能生效呀，妈蛋，编译了半小时左右。</p>
+</blockquote>
+<h3 id="关闭node进程"><a href="#关闭node进程" class="headerlink" title="关闭node进程"></a>关闭node进程</h3><pre><code>lsof -i:3000 // 查看进程
+或
+ps -ef | grep node // 查看进程
+kill -9 pid // 杀掉进程
+</code></pre><h3 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h3><pre><code>yum install -y epel-release
+yum install docker-io # 安装docker
+chkconfig docker on  # 加入开机启动
+service docker start # 启动docker服务
+</code></pre><h3 id="基本信息查看"><a href="#基本信息查看" class="headerlink" title="基本信息查看"></a>基本信息查看</h3><pre><code>docker -v #查看docker的版本号，包括客户端、服务端、依赖的Go等
+docker info # 查看系统(docker)层面信息，包括管理的images, containers数等
+docker pull centos #下载
+docker images [ centos ] #查看
+docker run -i -t centos /bin/bash #启动centos容器
+</code></pre><h3 id="git常用命令"><a href="#git常用命令" class="headerlink" title="git常用命令"></a>git常用命令</h3><pre><code>git clone 拉取项目
+git branch  列出所有本地分支
+git branch -r 列出所有远程分支
+</code></pre>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/centos-linux/" rel="tag"># centos,linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/26/wx-mini/" rel="next" title="小程序常用问题【持续加入】">
+                <i class="fa fa-chevron-left"></i> 小程序常用问题【持续加入】
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/29/youdontknow/" rel="prev" title="【第一篇】你不知道的Javascript">
+                【第一篇】你不知道的Javascript <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/mao.jpg" alt="HarryQ">
+            
+              <p class="site-author-name" itemprop="name">HarryQ</p>
+              <p class="site-description motion-element" itemprop="description">coder,轻度二次元,电子烟玩家～</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#编译安装配置"><span class="nav-number">1.</span> <span class="nav-text">编译安装配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装git"><span class="nav-number">2.</span> <span class="nav-text">安装git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nvm安装node-js"><span class="nav-number">3.</span> <span class="nav-text">nvm安装node.js</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#用n安装"><span class="nav-number">3.1.</span> <span class="nav-text">用n安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#源码编译后安装node-js"><span class="nav-number">3.2.</span> <span class="nav-text">源码编译后安装node.js</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关闭node进程"><span class="nav-number">4.</span> <span class="nav-text">关闭node进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装docker"><span class="nav-number">5.</span> <span class="nav-text">安装docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本信息查看"><span class="nav-number">6.</span> <span class="nav-text">基本信息查看</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git常用命令"><span class="nav-number">7.</span> <span class="nav-text">git常用命令</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder"></span>
+  <span></span>
+  <a href="http://www.miitbeian.gov.cn/">粤ICP备16123639号-3</a>
+  
+
+
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
